@@ -51,7 +51,10 @@ public class Edge implements Serializable {
 	 * between two 2D points, p and q.
 	 */
 	private void calculateWeight() {
-		// TODO
+		double dpq = node1.getPosition().distance(node2.getPosition());
+		double bios = (node1.getBiomeWeight() + node2.getBiomeWeight()) / 2;
+		weight = dpq * bios;
+		
 	}
 	
 	public double getWeight() {

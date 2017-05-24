@@ -26,8 +26,13 @@ public class Vector2 implements Serializable {
 	 * @return The distance between the points
 	 */
 	public double distance(Vector2 v2) {
-		// TODO
-		return -1.0;
+		double result = -1.0;
+		double xy = x - v2.y;
+		double yx = y - v2.x;
+		double x2 = xy * xy;
+		double y2 = yx * yx;
+		
+		return Math.sqrt(x2 + y2);
 	}
 	
 	@Override
