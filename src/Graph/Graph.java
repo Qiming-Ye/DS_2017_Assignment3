@@ -26,12 +26,10 @@ public class Graph {
 		for (int i=0;i<nodes.length;i++) { 
 			node = nodes[i];
 			edges = new ArrayList<Edge>();
-
 			if (i+1 >= 0 && i+1<nodes.length)
 				if (nodes[i+1] != null){
 					edges.add(new Edge(node, nodes[i+1]));
 				}
-			
 			if (i-1 >= 0 && i-1<nodes.length)
 				if (nodes[i-1] != null){
 					edges.add(new Edge(node, nodes[i-1]));
