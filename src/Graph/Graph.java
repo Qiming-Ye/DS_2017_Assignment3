@@ -1,5 +1,9 @@
 package Graph;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Represents a non-directional graph where each vertex
  * is a Node object. Connections between nodes are based
@@ -17,8 +21,54 @@ public class Graph {
 	 * @return An array of connected Node objects
 	 */
 	public void connectNodes(Node[] nodes) {
-		
-		
+		ArrayList<Edge> edges = null;
+		Node node = null;
+		for (int i=0;i<nodes.length;i++) { 
+			node = nodes[i];
+			edges = new ArrayList<Edge>();
+
+			if (i+1 >= 0 && i+1<nodes.length)
+				if (nodes[i+1] != null){
+					edges.add(new Edge(node, nodes[i+1]));
+				}
+			
+			if (i-1 >= 0 && i-1<nodes.length)
+				if (nodes[i-1] != null){
+					edges.add(new Edge(node, nodes[i-1]));
+				}
+			
+			if (i+10 >= 0 && i+10<nodes.length)
+				if (nodes[i+10] != null){
+					edges.add(new Edge(node, nodes[i+10]));
+				}
+			
+			if (i-10 >= 0 && i-10<nodes.length)
+				if (nodes[i-10] != null){
+					edges.add(new Edge(node, nodes[i-10]));
+				}
+			
+			if (i-11 >= 0 && i-11<nodes.length)
+				if (nodes[i-11] != null){
+					edges.add(new Edge(node, nodes[i-11]));
+				}
+			
+			if (i+11 >= 0 && i+11<nodes.length)
+				if (nodes[i+11] != null){
+					edges.add(new Edge(node, nodes[i+11]));
+				}
+			
+			if (i-9 >= 0 && i-9<nodes.length)
+				if (nodes[i-9] != null){
+					edges.add(new Edge(node, nodes[i-9]));
+				}
+			
+			if (i+9 >= 0 && i+9<nodes.length)
+				if (nodes[i+9] != null){
+					edges.add(new Edge(node, nodes[i+9]));
+				}
+			
+			node.setEdges(edges);
+		}
 		// TODO
 	}
 	
