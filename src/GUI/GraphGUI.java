@@ -12,6 +12,7 @@ public class GraphGUI extends Application {
 	static Canvas canvas;
 	static Canvas player_canvas;
 	
+	@Override
 	public void start(Stage stage) throws Exception {
 		stage.setTitle("Data Structures 2017 - Assignment 3");
 		stage.setResizable(false);

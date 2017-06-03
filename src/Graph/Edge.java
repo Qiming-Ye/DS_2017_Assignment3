@@ -1,7 +1,6 @@
 package Graph;
 
 import java.io.Serializable;
-import java.util.Map;
 
 /**
  * Represents a path, or connection, between two nodes.

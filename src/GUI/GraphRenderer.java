@@ -104,6 +104,7 @@ class GraphRenderer {
 			
 			Vector2 current = new Vector2(-1, -1);
 			
+			@Override
 			public void handle(long currentNanoTime) {
 				if (updated()) {
 					pgc.clearRect(0, 0, pgc.getCanvas().getWidth(), pgc.getCanvas().getHeight());

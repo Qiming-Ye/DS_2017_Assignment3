@@ -6,7 +6,9 @@ import Graph.Edge;
 import GUI.GraphLoader;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import java.util.ArrayList;
 
@@ -17,6 +19,7 @@ import static junit.framework.TestCase.fail;
  * Most tests assume that connectNodes is working.
  * Complete that method first.
  */
+@FixMethodOrder(MethodSorters.JVM)
 public class GraphTest extends DSUnitTesting {
 	
 	Graph g;
@@ -25,7 +28,7 @@ public class GraphTest extends DSUnitTesting {
 	@Before
 	public void initialise() {
 		GraphLoader gl = new GraphLoader();
-		nodes = gl.getNodes();
+		nodes = GraphLoader.getNodes();
 		g = new Graph();
 	}
 	

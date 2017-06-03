@@ -10,6 +10,10 @@ import java.io.Serializable;
  */
 public class Vector2 implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5186572965866150772L;
 	public double x;
 	public double y;
 	

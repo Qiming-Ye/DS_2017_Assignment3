@@ -26,48 +26,39 @@ public class Graph {
 		for (int i=0;i<nodes.length;i++) { 
 			node = nodes[i];
 			edges = new ArrayList<Edge>();
-			if (i+1 >= 0 && i+1<nodes.length)
-				if (nodes[i+1] != null){
-					edges.add(new Edge(node, nodes[i+1]));
-				}
-			if (i-1 >= 0 && i-1<nodes.length)
-				if (nodes[i-1] != null){
-					edges.add(new Edge(node, nodes[i-1]));
-				}
+			int edge = i % 10;
 			
-			if (i+10 >= 0 && i+10<nodes.length)
-				if (nodes[i+10] != null){
-					edges.add(new Edge(node, nodes[i+10]));
-				}
+			if (edge != 9) // west edge detect
+				//add a east edge
+				edges.add(new Edge(node, nodes[i+1]));
+				
+			if (edge != 0) // east edge detect
+				//add a west edge
+				edges.add(new Edge(node, nodes[i-1]));
 			
-			if (i-10 >= 0 && i-10<nodes.length)
-				if (nodes[i-10] != null){
-					edges.add(new Edge(node, nodes[i-10]));
-				}
+			if (i+10<nodes.length)// detect out of bounds south edge
+				//add south edge
+				edges.add(new Edge(node, nodes[i+10]));
 			
-			if (i-11 >= 0 && i-11<nodes.length)
-				if (nodes[i-11] != null){
-					edges.add(new Edge(node, nodes[i-11]));
-				}
+			if (i-10 >= 0) //detect out of bounds north edge
+				//add north edge
+				edges.add(new Edge(node, nodes[i-10]));
 			
-			if (i+11 >= 0 && i+11<nodes.length)
-				if (nodes[i+11] != null){
-					edges.add(new Edge(node, nodes[i+11]));
-				}
 			
-			if (i-9 >= 0 && i-9<nodes.length)
-				if (nodes[i-9] != null){
-					edges.add(new Edge(node, nodes[i-9]));
-				}
+			if (i-9 >= 0 && edge != 0) //detect out of bounds north east edge
+				edges.add(new Edge(node, nodes[i-9]));
 			
-			if (i+9 >= 0 && i+9<nodes.length)
-				if (nodes[i+9] != null){
-					edges.add(new Edge(node, nodes[i+9]));
-				}
+			if (i+11<nodes.length && edge != 9) //detect out of bounds south east edge
+				edges.add(new Edge(node, nodes[i+11]));
+
+			if (i-11 >= 0 && edge != 0) //detect out of bounds north west edge
+				edges.add(new Edge(node, nodes[i-11]));		
+
+			if (i+9 < nodes.length && edge != 0) //detect out of bounds south west edge
+				edges.add(new Edge(node, nodes[i+9]));
 			
 			node.setEdges(edges);
 		}
-		// TODO
 	}
 	
 	/**
@@ -78,10 +69,15 @@ public class Graph {
 	 * @return An array of Node objects representing the path from start to target, in that order
 	 */
 	public Node[] breadthFirstSearch(Node start, Node target) {
-		// TODO
+		LinkedList<Node> queue = new LinkedList<Node>();		
+		queue.add(start);
+		
+		while (!queue.isEmpty()){
+			
+		}
 		return null;
 	}
-	
+
 	/**
 	 * Performs a depth-first search of the graph and returns the first-found
 	 * path from one node to another.
@@ -125,8 +121,15 @@ public class Graph {
 	 * @param destination The destination, or second, node
 	 * @return The edge between the nodes, or null if not found
 	 */
+	
 	public Edge getEdge(Node source, Node destination) {
-		// TODO
+		List<Edge> srcEdges = source.getEdges();
+		Edge e = new Edge(source,destination);
+		for (Edge srcEdge : srcEdges){
+			if (srcEdge.getNode2().equals(destination)){
+				return srcEdge;
+			}
+		}
 		return null;
 	}
 	
@@ -137,7 +140,6 @@ public class Graph {
 	 * @return The total cost of travel
 	 */
 	public double calculateCost(Node[] vertices) {
-		// TODO
-		return -1.0;
+		return 0;//TODO
 	}
 }
