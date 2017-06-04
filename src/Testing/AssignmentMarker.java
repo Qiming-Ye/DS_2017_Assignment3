@@ -15,7 +15,7 @@ public class AssignmentMarker {
 	
 	private static java.util.ArrayList<Failure> failures = new java.util.ArrayList<Failure>();
 	
-	private static void testrunner(String name, Class c) {
+	private static void testrunner(String name, Class<?> c) {
 		
 		Result test = JUnitCore.runClasses(c);
 		failures.addAll(test.getFailures());
@@ -28,7 +28,7 @@ public class AssignmentMarker {
 	}
 	
 	// Simple test information
-	private static void runATest(String name, Class c) {
+	private static void runATest(String name, Class<?> c) {
 		System.out.println("\n" + name);
 		for ( int i = 0 ; i < name.length() ; ++i )
 			System.out.print("-");

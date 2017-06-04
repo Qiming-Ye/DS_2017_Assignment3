@@ -1,8 +1,12 @@
 package Graph;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 /**
  * Represents a non-directional graph where each vertex
@@ -69,13 +73,49 @@ public class Graph {
 	 * @return An array of Node objects representing the path from start to target, in that order
 	 */
 	public Node[] breadthFirstSearch(Node start, Node target) {
-		LinkedList<Node> queue = new LinkedList<Node>();		
-		queue.add(start);
 		
+		Queue<Node> queue = new LinkedList<Node>(); 
+		
+		List<Node> visited = new ArrayList<Node>();
+	    Map<Node, Node> parentMap = new HashMap<Node, Node>();
+	    
+		Node parent = start;
+		queue.offer(start);
+		visited.add(start);
+		
+		//while queue is empty
 		while (!queue.isEmpty()){
-			
+			//get first Node in queue
+			parent = queue.poll();
+			//check if it is the target
+			if (parent.equals(target)){
+				break;
+			} else {
+				//get all edges
+				for (Edge e : parent.getEdges()){
+					//get the node of the edge
+					Node neighbour = e.getNode2();
+					//if the node hasn't been seen before
+					if (!visited.contains(neighbour)){
+						//put it in the queue for later traversing
+						queue.offer(neighbour);
+						//set it as visited so it can't be put in the queue again
+						visited.add(neighbour);
+						//give it the parent it was found at
+						parentMap.put(neighbour, parent);	
+					}
+				}
+			}
 		}
-		return null;
+		if (!parent.equals(target))
+			return null;
+		
+		List<Node> path = new ArrayList<Node>();
+		for (Node node = target; node != null; node = parentMap.get(node))
+			path.add(node);
+		
+		Collections.reverse(path);
+		return path.toArray(new Node[path.size()]);
 	}
 
 	/**
@@ -86,6 +126,8 @@ public class Graph {
 	 * @return An array of Node objects representing the path from start to target, in that order
 	 */
 	public Node[] depthFirstSearch(Node start, Node target) {
+
+		
 		// TODO
 		return null;
 	}
