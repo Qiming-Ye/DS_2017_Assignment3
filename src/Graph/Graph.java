@@ -126,7 +126,14 @@ public class Graph {
 	 * @return An array of Node objects representing the path from start to target, in that order
 	 */
 	public Node[] depthFirstSearch(Node start, Node target) {
-
+		Queue<Node> queue = new LinkedList<Node>(); 
+	
+		List<Node> visited = new ArrayList<Node>();
+	    Map<Node, Node> parentMap = new HashMap<Node, Node>();
+	    
+		Node parent = start;
+		queue.offer(start);
+		visited.add(start);
 		
 		// TODO
 		return null;
